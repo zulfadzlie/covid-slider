@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logo.ico">
+    <title>Covid Data Chart of Malaysia and Neighbors</title>
+</head>
+
+<body>    
+    <div id="chart-container" class="chart-container">
+        <div id="myDiv" class="chart"></div>
+    </div>
+
+    <div class="radio-container">
+        <form id="radio-buttons" class="radio-buttons">
+            <input type="radio" id="radio-cases" class="radio-button" name="radio-buttons" value="Cases" onclick="radioSelected('Cases')" checked="checked">
+            <label for="radio-cases" class = "radio-label">Cases</label>
+            
+            <input type="radio" id="radio-deaths" class="radio-button" name="radio-buttons" value="Deaths" onclick="radioSelected('Deaths')">
+            <label for="radio-cases" class = "radio-label">Deaths</label>
+        </form>
+    </div>
+
+    <div id="slide-container" class="slide-container">
+        <input type="range" min="1" max=days_ago value="100" class="slider" id="myRange">
+        <p><span id="demo"></span></p>
+    </div>
+
+    <div class="container">   
+        <p>Latest data as of <span id="date"></span></p>
+        <a href="https://covid.ourworldindata.org/">Source: Our World In Data</a>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
