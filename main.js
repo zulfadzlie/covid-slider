@@ -1,4 +1,5 @@
 const url = "https://covid.ourworldindata.org/data/owid-covid-data.json"
+// const url = "owid-covid-data.json"
 
 const codes_country = [
   "MYS", 
@@ -7,11 +8,18 @@ const codes_country = [
   "PHL", 
   "SGP", 
   "THA", 
-  "VNM"
+  "VNM",
+  "USA",
+  "GBR",
+  "AUS",
+  "IND",
+  "DEU",
+  "FRA",
+  "CAN"
 ]
 
 let days_adjust = 1
-let days_ago = 100
+let days_ago = 114
 
 let date = ""
 let label = []
@@ -19,7 +27,9 @@ let x = []
 let y1 = []
 let y2 = []
 let ymode = y1
-let yrange = [ 0, 700 ]
+let y1range = [ 0, 800 ]
+let y2range = [ 0, 13 ]
+let ymoderange = y1range
 let ytick = 100
 
 let ytitle = "New cases smoothed per million"
@@ -29,6 +39,7 @@ let historical = []
 let mode = "cases"
 
 let slider = document.getElementById("myRange")
+slider.max = days_ago
 let output = document.getElementById("demo")
 
 async function load() {
@@ -40,7 +51,7 @@ async function load() {
     const data = await response.json()
     const rows = getRows(data)
     const table = getTable(data, rows)
-    setPlotPoints(table[days_adjust-1])
+    setPlotPoints(table[days_ago - 1])
     output.innerHTML = date
     document.getElementById("date").textContent = date
     historical = table
@@ -49,7 +60,6 @@ async function load() {
     console.log(e)
   }
 }
-
 
 load()
 
@@ -137,7 +147,7 @@ function prepLayout() {
 
     yaxis: {
         title: ytitle,
-        range: yrange,
+        range: ymoderange,
         dtick: ytick
     },
 
@@ -197,12 +207,12 @@ function modeSwitch() {
   if (mode === "cases") {
     ymode = y1
     ytitle = "New cases smoothed per million"
-    yrange = [ 0, 700 ]
+    ymoderange = y1range
     ytick = 100
   } else {
     ymode = y2
     ytitle = "New deaths smoothed per million"
-    yrange = [ 0, 12 ]
+    ymoderange = y2range
     ytick = 1
   }
 }
