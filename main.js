@@ -1,5 +1,5 @@
-// const url = "https://covid.ourworldindata.org/data/owid-covid-data.json"
-const url = "owid-covid-data.json"
+const url = "https://covid.ourworldindata.org/data/owid-covid-data.json"
+// const url = "owid-covid-data.json"
 
 const codes_country = [
   "MYS", 
