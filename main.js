@@ -1,5 +1,5 @@
-const url = "https://covid.ourworldindata.org/data/owid-covid-data.json"
-// const url = "owid-covid-data.json"
+// const url = "https://covid.ourworldindata.org/data/owid-covid-data.json"
+const url = "owid-covid-data.json"
 
 const codes_country = [
   "MYS", 
@@ -53,7 +53,8 @@ async function load() {
     const table = getTable(data, rows)
     setPlotPoints(table[days_ago - 1])
     output.innerHTML = date
-    document.getElementById("date").textContent = date
+    document.getElementById("date").textContent = table[0].MYS[0]
+    console.log(table[0].MYS[0])
     historical = table
     preparePlot(prepData(), prepLayout(), prepConfig())
   } catch (e) {
