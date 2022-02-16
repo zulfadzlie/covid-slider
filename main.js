@@ -19,7 +19,7 @@ const codes_country = [
 ]
 
 let days_adjust = 1
-let days_ago = 114
+let days_ago = 231
 
 let date = ""
 let label = []
@@ -27,10 +27,10 @@ let x = []
 let y1 = []
 let y2 = []
 let ymode = y1
-let y1range = [ 0, 800 ]
+let y1range = [ 0, 5500 ]
 let y2range = [ 0, 13 ]
 let ymoderange = y1range
-let ytick = 100
+let ytick = 500
 
 let ytitle = "New cases smoothed per million"
 
@@ -57,6 +57,7 @@ async function load() {
     console.log(table[0].MYS[0])
     historical = table
     preparePlot(prepData(), prepLayout(), prepConfig())
+    document.getElementById("loader").style.display = "none"
   } catch (e) {
     console.log(e)
   }
@@ -209,7 +210,7 @@ function modeSwitch() {
     ymode = y1
     ytitle = "New cases smoothed per million"
     ymoderange = y1range
-    ytick = 100
+    ytick = 500
   } else {
     ymode = y2
     ytitle = "New deaths smoothed per million"

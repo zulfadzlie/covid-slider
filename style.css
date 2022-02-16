@@ -40,3 +40,18 @@ a {
     margin: 3rem auto;
     text-align: left;
 }
+
+.loader {
+    border: 24px solid #f3f3f3; /* Light grey */
+    border-top: 24px solid #0075FF; /* Blue */
+    border-radius: 50%;
+    width: 18rem;
+    height: 18rem;
+    animation: spin 2s linear infinite;
+    margin: 3rem auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
